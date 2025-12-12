@@ -1,4 +1,4 @@
-nmap -v : To check nmap version (Nmap _version.png)
+nmap -v : To check nmap version (https://github.com/Boluwatife-design/-Reconnaissance-with-NMAP-WIRESHARK/blob/main/Nmap%20_version.png)
 
 nmap -sn 10.6.6.0/24 : Performs a ping scan (no port scanning) across the subnet 10.6.6.0/24 to identify which hosts are up and reachable. (open port_OS running on host.PNG)
 
