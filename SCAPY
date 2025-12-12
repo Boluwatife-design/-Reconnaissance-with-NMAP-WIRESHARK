@@ -1,8 +1,8 @@
 sudo su : Switches to the root user, which is required because Scapy needs elevated privileges to capture packets and interact with network interfaces.
 
-scapy : Launches the Scapy interactive shell.
+scapy : Launches the Scapy interactive shell. (Navigating Scapy.PNG)
 
-sniff() : Starts capturing packets on the default network interface until manually stopped.
+sniff() : Starts capturing packets on the default network interface until manually stopped. (sniffing.PNG)
 
 ping google.com : This creates ICMP packets (echo-request and echo-reply), allowing Scapy to capture live traffic.
 
@@ -24,13 +24,13 @@ Open browser → type 10.6.6.23
               DNS lookups (if hostname used)
               Responses from the server
 
-sniff(iface="br-internal", filter="icmp", count=5):
+sniff(iface="br-internal", filter="icmp", count=5): (ping based on interface and filter protocol.PNG)
             This tells Scapy:
             Listen only on br-internal
             Capture only ICMP packets
             Stop after 5 packets
 
-temi3[3] : Shows the 4th packet captured in full detail.
+temi3[3] : Shows the 4th packet captured in full detail. (Network logs.PNG)
            An ICMP request
            An ICMP reply
            ARP resolution packet (if ARP occurred before ICMP)
