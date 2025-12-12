@@ -1,0 +1,41 @@
+nmap -v : To check nmap version
+
+nmap -sn 10.6.6.0/24 : Performs a ping scan (no port scanning) across the subnet 10.6.6.0/24 to identify which hosts are up and reachable.
+
+sudo nmap -O 10.6.6.23 : Attempts to identify the operating system running on the target host (10.6.6.23).
+                         This helps understand the environment and potential OS-specific vulnerabilities.
+
+nmap -p21 -sV -A -T4 10.6.6.23 : Scans port 21 specifically with:
+                                -sV → Detects service versions
+                                -A → Enables OS detection, traceroute, and NSE scripts
+                                -T4 → Faster scan timing
+
+nmap -p139,445 -A 10.6.6.23 : Scans Windows SMB ports (139 and 445) with aggressive detection.
+                              Useful to identify:SMB version
+                              Security posture
+                              Potential SMB vulnerabilities
+
+nmap --script smb-enum-shares.nse -p445 10.6.6.23: Runs the SMB share enumeration script against port 445.
+                                                   Reveals: Shared folders, Permissions & Anonymous access possibilities
+
+smbclient //10.6.6.23/print$ -N: Attempts to access the SMB share print$ without authentication (-N).
+                                 If access succeeds, you can browse files within the share.
+
+ifconfig: Displays network interface configuration:
+          IP address, MAC address &Network status
+
+ip route: Shows the system’s routing table, including:
+          Default gateway, Routing paths & Interface assignment
+          Useful for understanding how traffic leaves the machine
+
+cat /etc/resolv.conf : Displays DNS server configuration.
+                        Helps verify: Domain names & DNS servers being used
+
+sudo tcpdump -i eth0 -s 0 -w flames.pcap: Captures all network traffic on interface eth0, saving it to a file named ladies.pcap.
+                                          Parameters: -i eth0 → specify interface
+                                                      -s 0 → capture full packets (no truncation)
+                                                      -w flames.pcap → write to file
+
+ls flames.pcap: Verifies that the capture file exists in the current directory.
+
+wireshark: Opens the Wireshark GUI to import and analyze the captured .pcap file
